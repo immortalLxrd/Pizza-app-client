@@ -1,14 +1,25 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useMutation, useApolloClient, gql } from '@apollo/client'
 
 import Button from '../components/UI/Button/Button'
 import Input from '../components/UI/Input/Input'
 
+const SIGNIN_USER = gql`mutation SignIn($phoneNumber: String!, $password: String!) {
+    signIn(phoneNumber: $phoneNumber, password: $password)
+  }`
 
-const SignInRoute = () => {
+
+const SignInRoute = (props) => {
 
     const [values, setValues] = useState()
+
+    useEffect(() => {
+        document.title = 'Sign In'
+    })
+
+    const navigate = useNavigate()
 
     const onChange = e => {
         setValues({
@@ -17,21 +28,33 @@ const SignInRoute = () => {
         })
     }
 
-    useEffect(() => {
-        document.title = 'Sign In'
+    const [signIn, { loading, error }] = useMutation(SIGNIN_USER, {
+        onCompleted: data => {
+            localStorage.setItem('token', data.signIn)
+            navigate('/')
+        }
     })
 
     return (
         <div className='sign'>
             <div className="_container">
                 <h2 className='title sign__title'>Sign In</h2>
-                <form className='form sign__form'>
+                <form className='form sign__form'
+                    onSubmit={e => {
+                        e.preventDefault()
+                        signIn({
+                            variables: {
+                                ...values
+                            }
+                        })
+                    }}
+                >
                     <label htmlFor="phone">Phone number:</label>
                     <Input
                         id="phone"
                         required
-                        type="number"
-                        name="phone"
+                        // type="number"
+                        name="phoneNumber"
                         placeholder="Phone"
                         onChange={onChange}
                     />

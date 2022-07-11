@@ -1,56 +1,61 @@
 import { useQuery, gql } from '@apollo/client'
 import React from 'react'
-
-
-const GET_NOTES = gql`
-  query PizzaFeed($cursor: String) {
-    pizzaFeed(cursor: $cursor) {
-      cursor
-      hasNextPage
-      items {
-        id
-        name
-        size
-        slices
-        toppings
-        createdAt
-        updatedAt
-      }
-    }
-  }
-`
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 
 const HomeRoute = () => {
 
+  useEffect(() => { document.title = "Pizza!" })
+
+  const GET_NOTES = gql`
+    query PizzaFeed($cursor: String) {
+      pizzaFeed(cursor: $cursor) {
+        cursor
+        hasNextPage
+        items {
+          id
+          name
+          size
+          slices
+          toppings
+          createdAt
+          updatedAt
+        }
+      }
+    }
+  `
+  
   const { data, loading, error } = useQuery(GET_NOTES)
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <p className='_container home'>Loading...</p>
 
-  if (error) return <p>Error!</p>
+  if (error) return <p className='_container home'>Error!</p>
 
   return (
     <>
       <div className='_container home'>
-        <h1 className='title'>Pizzas!</h1>
+        <h1 className='title'>Pizza!</h1>
         <div className="pizza_list">
           {data.pizzaFeed.items.map(item => (
-            <div className='card pizza_list__card' key={item.id}>
-              <ul>
-                <img className='card__img' src="/img/pizza.png" alt="" />
-                <li className='title card__title'>
-                  {item.name}
-                </li>
-                <li className='card__description'>
-                  <p>
-                    size: {item.size}
-                  </p>
-                  <p>
-                    slices: {item.slices}
-                  </p>
-                </li>
-              </ul>
-            </div>
+            <Link to={`/pizza/${item.id}`} key={item.id}>
+              <div className='card pizza_list__card'>
+                <ul>
+                  <img className='card__img' src="/img/pizza.png" alt="" />
+                  <li className='title card__title'>
+                    {item.name}
+                  </li>
+                  <li className='card__description'>
+                    <p>
+                      size: {item.size}
+                    </p>
+                    <p>
+                      slices: {item.slices}
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
