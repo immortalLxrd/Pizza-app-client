@@ -1,7 +1,6 @@
 import './styles/App.scss';
 import Pages from './pages';
-import {ApolloClient, ApolloProvider, InMemoryCache, createHttpLink, gql} from '@apollo/client';
-import {setContext} from "@apollo/client/link/context";
+import {ApolloProvider} from '@apollo/client';
 import {AuthProvider} from "./context/authContext";
 import client from "./ApolloClient";
 

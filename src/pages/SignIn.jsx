@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useMutation, gql} from '@apollo/client';

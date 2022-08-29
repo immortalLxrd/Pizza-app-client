@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {AuthContext} from "../context/authContext";
 
@@ -20,7 +20,7 @@ const Header = () => {
 				</h1>
 				<ul className='nav header__nav'>
 					<li className='nav__item'>
-						<Link to="/">Pizza!</Link>
+						<Link to="/">Catalog</Link>
 					</li>
 					{
 						user ? (

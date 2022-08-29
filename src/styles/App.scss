@@ -3,6 +3,17 @@ $base: rgb(48, 50, 71);
 body {
   line-height: 1.2;
   color: $base;
+  height: 100%;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 1 auto;
 }
 
 h1 {
@@ -27,32 +38,34 @@ a {
 }
 
 .header {
-  padding: 10px;
+  display: flex;
+  padding: 20px;
   color: #fff;
-  background-color: rgb(207, 95, 95);
-  font-family: "Arial";
+  background-color: #C82A35;
+  font-family: "Arial", serif;
   text-decoration: underline;
   font-style: italic;
 
   &__inner {
     position: relative;
+    width: 100%;
     height: 100px;
     display: flex;
     align-items: center;
   }
 
   &__logo {
-    text-align: center;
-    position: absolute;
-    font-size: 50px;
-    right: 40%;
-    left: 40%;
+    margin: 0 auto;
+    align-self: center;
+    justify-self: center;
+    font-size: 56px;
   }
 
   &__nav {
+    position: absolute;
+    right: 0;
     display: flex;
     flex-direction: row;
-    margin-left: auto;
     font-weight: 600;
   }
 }
@@ -87,17 +100,17 @@ a {
 }
 
 .home {
-  margin-top: 30px;
+  padding: 50px 10px;
 }
 
 .pizza_list {
-  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 
   &__card {
     max-width: 280px;
-    margin: 10px;
     transition: 0.2s;
     padding: 20px;
     border: 3px dotted $base;
@@ -144,4 +157,9 @@ a {
     display: flex;
     flex-direction: column;
   }
+}
+
+.footer {
+  height: 120px;
+  background-color: #008D44;
 }
