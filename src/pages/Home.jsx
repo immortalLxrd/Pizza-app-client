@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 
-const HomeRoute = () => {
+const Home = () => {
 
   useEffect(() => { document.title = "Pizza!" })
 
@@ -63,4 +63,4 @@ const HomeRoute = () => {
   )
 }
 
-export default HomeRoute
+export default Home

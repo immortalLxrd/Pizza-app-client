@@ -1,10 +1,10 @@
-import React from 'react'
-import {useEffect, useState} from 'react'
-import {useNavigate} from 'react-router-dom'
-import {useMutation, useApolloClient, gql} from '@apollo/client'
-
-import Button from '../components/UI/Button/Button'
-import Input from '../components/UI/Input/Input'
+import React, {useContext} from 'react';
+import {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {useMutation, gql} from '@apollo/client';
+import Button from '../components/UI/Button/Button';
+import Input from '../components/UI/Input/Input';
+import {AuthContext} from "../context/authContext";
 
 const SIGNUP_USER = gql`
     mutation SignUp($phoneNumber: String!, $password: String!, $email: String) {
@@ -12,38 +12,32 @@ const SIGNUP_USER = gql`
     }
 `
 
-const IS_LOGGED_IN = gql`
-    query {
-        isLoggedIn @client
-    }
-`
 
-const SignUpRoute = (props) => {
-
-	const [values, setValues] = useState()
+const SignUp = (props) => {
+	const navigate = useNavigate();
+	const [values, setValues] = useState();
+	const context = useContext(AuthContext);
 
 	useEffect(() => {
 		document.title = 'Sign Up'
-	})
-
-	const navigate = useNavigate()
+	});
 
 	const onChange = e => {
 		setValues({
 			...values,
 			[e.target.name]: e.target.value
-		})
-	}
-
-	const client = useApolloClient()
+		});
+	};
 
 	const [signUp, {loading, error}] = useMutation(SIGNUP_USER, {
 		onCompleted: data => {
-			localStorage.setItem('token', data.signUp)
-			client.writeQuery({query: IS_LOGGED_IN, data: {isLoggedId: true}})
-			navigate('/')
+			context.login(data.signUp);
+			navigate('/');
 		}
-	})
+	});
+
+	if (loading) return <p>Loading...</p>;
+	if (error) return <p>Error!</p>;
 
 	return (
 		<div className='sign'>
@@ -91,7 +85,7 @@ const SignUpRoute = (props) => {
 			</div>
 		</div>
 	)
-}
+};
 
 
-export default SignUpRoute
+export default SignUp;

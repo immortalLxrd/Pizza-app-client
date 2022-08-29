@@ -1,21 +1,15 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import {gql, useQuery} from "@apollo/client"
+import React, {useContext} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
+import {AuthContext} from "../context/authContext";
 
-const IS_LOGGED_IN = gql`
-    query {
-        isLoggedIn @client
-    }
-`
 
 const Header = () => {
-	const {data, client} = useQuery(IS_LOGGED_IN)
+	const navigate = useNavigate();
+	const {user, logout} = useContext(AuthContext);
 
-	console.log(data)
-
-	function logOut(e) {
-		localStorage.removeItem('token', data.signIn)
-		client.writeQuery({query: IS_LOGGED_IN, data: {isLoggedIn: false}})
+	function onLogout() {
+		logout();
+		navigate('/');
 	}
 
 	return (
@@ -29,9 +23,9 @@ const Header = () => {
 						<Link to="/">Pizza!</Link>
 					</li>
 					{
-						data.isLoggedIn ? (
+						user ? (
 							<a
-								onClick={() => logOut()}
+								onClick={onLogout}
 							>
 								Log Out
 							</a>
@@ -48,6 +42,6 @@ const Header = () => {
 			</div>
 		</header>
 	)
-}
+};
 
-export default Header
+export default Header;
