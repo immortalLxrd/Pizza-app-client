@@ -12,8 +12,9 @@ body {
   flex-direction: column;
 }
 
-main {
+.main {
   flex: 1 1 auto;
+  padding: 50px 10px;
 }
 
 h1 {
@@ -81,7 +82,7 @@ a {
   margin: 0 auto;
 
   &__title {
-    margin: 40px 0;
+    margin-bottom: 20px;
     text-align: center;
   }
 
@@ -100,7 +101,6 @@ a {
 }
 
 .home {
-  padding: 50px 10px;
 }
 
 .pizza_list {
@@ -160,6 +160,6 @@ a {
 }
 
 .footer {
-  height: 120px;
+  height: 140px;
   background-color: #008D44;
 }

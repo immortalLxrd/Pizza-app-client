@@ -7,6 +7,8 @@ import Home from './Home'
 import SignUp from "./SignUp"
 import SignIn from "./SignIn"
 import Pizza from "./Pizza"
+import NewItem from "./NewItem";
+import EditItem from "./EditItem";
 
 
 const Pages = () => {
@@ -18,6 +20,8 @@ const Pages = () => {
 						<Route path="/signup" element={<SignUp/>}/>
 						<Route path="/signin" element={<SignIn/>}/>
 						<Route path="/pizza/:id" element={<Pizza/>}/>
+						<Route path="/new" element={<NewItem/>}/>
+						<Route path="/edit" element={<EditItem/>}/>
 					</Routes>
 				</Layout>
 			</BrowserRouter>

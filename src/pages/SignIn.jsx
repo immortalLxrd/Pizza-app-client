@@ -1,15 +1,11 @@
 import {useContext} from 'react';
 import {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {useMutation, gql} from '@apollo/client';
+import {useMutation} from '@apollo/client';
 import Button from '../components/UI/Button/Button';
 import Input from '../components/UI/Input/Input';
 import {AuthContext} from "../context/authContext";
-
-const SIGNIN_USER = gql`mutation SignIn($phoneNumber: String!, $password: String!) {
-    signIn(phoneNumber: $phoneNumber, password: $password)
-}
-`
+import {SIGNIN_USER} from "../gql/mutations";
 
 
 const SignIn = (props) => {

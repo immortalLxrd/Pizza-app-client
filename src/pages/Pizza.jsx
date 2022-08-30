@@ -1,18 +1,7 @@
-import React from 'react';
-import {useQuery, gql} from '@apollo/client';
+import {useQuery} from '@apollo/client';
 import {useParams} from 'react-router-dom';
 import {useEffect} from 'react';
-
-const GET_ITEM = gql`
-    query Query($pizzaItemId: ID!) {
-        pizzaItem(id: $pizzaItemId) {
-            size
-            name
-            id
-            slices
-        }
-    }
-`;
+import {GET_ITEM} from "../gql/query";
 
 const Pizza = () => {
 
@@ -28,7 +17,7 @@ const Pizza = () => {
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error!</p>;
 
-	const {name, size, slices} = data.pizzaItem;
+	const {name, size, price} = data.pizzaItem;
 
 	return (
 		<>
@@ -43,7 +32,7 @@ const Pizza = () => {
 							Size: {size}
 						</p>
 						<p>
-							Slices: {slices}
+							Price: {price}
 						</p>
 					</div>
 				</div>

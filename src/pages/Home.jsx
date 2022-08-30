@@ -1,7 +1,7 @@
-import {useQuery, gql} from '@apollo/client'
-import React from 'react'
+import {useQuery} from '@apollo/client'
 import {useEffect} from 'react'
 import {Link} from 'react-router-dom'
+import {GET_PIZZA} from "../gql/query";
 
 
 const Home = () => {
@@ -10,25 +10,7 @@ const Home = () => {
 		document.title = "Pizza!"
 	})
 
-	const GET_NOTES = gql`
-      query PizzaFeed($cursor: String) {
-          pizzaFeed(cursor: $cursor) {
-              cursor
-              hasNextPage
-              items {
-                  id
-                  name
-                  size
-                  slices
-                  toppings
-                  createdAt
-                  updatedAt
-              }
-          }
-      }
-	`;
-
-	const {data, loading, error} = useQuery(GET_NOTES)
+	const {data, loading, error} = useQuery(GET_PIZZA)
 
 	if (loading) return <p className='_container home'>Loading...</p>
 
