@@ -98,7 +98,8 @@ a {
 
 .form {
   min-height: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 20px 0;
 
   &__btn {
@@ -155,13 +156,19 @@ a {
     gap: 50px;
   }
 
+  &__title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
   &__img {
     max-width: 500px;
     max-height: 500px;
   }
 
   &__description {
-    min-width: 500px;
+    min-width: 550px;
     display: flex;
     flex-direction: column;
   }
@@ -172,11 +179,38 @@ a {
     gap: 20px;
     justify-content: end;
   }
+}
 
-  &__btn {
-    margin-top: 40px;
-    max-width: 200px;
+.item-form {
+  display: grid;
+  padding: 0 50px;
+  grid-template-columns: auto 1fr;
+  gap: 50px;
+
+  &__title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
   }
+
+  &__img {
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  &__form {
+    width: 550px;
+  }
+
+  &__btns {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: end;
+  }
+
+
 }
 
 .footer {

@@ -23,53 +23,56 @@ const ItemFormComponent = ({action, content = {}, title, ...props}) => {
 		};
 
 		return (
-			<div className='sign'>
-				<div className="_container">
-					<h2 className='title sign__title'>{title}</h2>
-					<form
-						className='form sign__form'
-						onSubmit={omSubmit}
-					>
-						<Input
-							required
-							type="text"
-							name="name"
-							value={values?.name}
-							placeholder="Name"
-							onChange={onChange}
-						/>
-						<Input
-							required
-							type="text"
-							name="img"
-							value={values?.img}
-							placeholder="Img"
-							onChange={onChange}
-						/>
-						<Input
-							required
-							type="text"
-							name="size"
-							value={values?.size}
-							placeholder="Size"
-							onChange={onChange}
-						/>
-						<Input
-							required
-							type="number"
-							name="price"
-							value={values?.price}
-							placeholder="Price"
-							onChange={onChange}
-						/>
-						<Button
-							className='form__btn'
-							type='submit'
+			<div className="_container">
+				<div className="item-form">
+					<img className='item-form__img' src={values?.img} alt=""/>
+					<div>
+						<h2 className='title item-form__title'>{title}</h2>
+						<form
+							className='form item-form__form'
+							onSubmit={omSubmit}
 						>
-							Submit
-						</Button>
-					</form>
+							<Input
+								required
+								type="text"
+								name="name"
+								value={values?.name}
+								placeholder="Name"
+								onChange={onChange}
+							/>
+							<Input
+								required
+								type="text"
+								name="img"
+								value={values?.img}
+								placeholder="Img"
+								onChange={onChange}
+							/>
+							<Input
+								required
+								type="text"
+								name="size"
+								value={values?.size}
+								placeholder="Size"
+								onChange={onChange}
+							/>
+							<Input
+								required
+								type="number"
+								name="price"
+								value={values?.price}
+								placeholder="Price"
+								onChange={onChange}
+							/>
+							<div className="item-form__btns">
+								<Button type='submit'>
+									Submit
+								</Button>
+							</div>
+						</form>
+					</div>
 				</div>
+
 			</div>
 		);
 	}

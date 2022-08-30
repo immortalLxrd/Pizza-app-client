@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import {useContext, useMemo} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {AuthContext} from "../context/authContext";
 
@@ -6,6 +6,8 @@ import {AuthContext} from "../context/authContext";
 const Header = () => {
 	const navigate = useNavigate();
 	const {user, logout} = useContext(AuthContext);
+
+	const userMemo = useMemo(() => user, [user]);
 
 	function onLogout() {
 		logout();
@@ -23,7 +25,7 @@ const Header = () => {
 						<Link to="/">Catalog</Link>
 					</li>
 					{
-						user ? (<>
+						userMemo ? (<>
 							<li className='nav__item'>
 								<Link to={'/pizza/new'}>
 									New Item

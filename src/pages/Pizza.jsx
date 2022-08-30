@@ -26,9 +26,9 @@ const Pizza = () => {
 				<div className='card pizza_item__card'>
 					<img className='card__img pizza_item__img' src={img} alt=""/>
 					<div className='card__description pizza_item__description'>
-						<p className='title card__title'>
+						<h2 className='title pizza_item__title'>
 							{name}
-						</p>
+						</h2>
 						<p>
 							<b>Size:</b> {size}
 						</p>
