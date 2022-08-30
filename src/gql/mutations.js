@@ -14,11 +14,12 @@ const SIGNIN_USER = gql`
 `;
 
 const NEW_ITEM = gql`
-    mutation NewPizza($name: String!, $size: String!, $price: String!) {
-        newPizza(name: $name, size: $size, price: $price) {
+    mutation NewPizza($name: String!, $img: String!, $size: String!, $price: String!) {
+        newPizza(name: $name, img: $img, size: $size, price: $price) {
             price
             size
             name
+            img
             id
             createdAt
             updatedAt
@@ -27,10 +28,11 @@ const NEW_ITEM = gql`
 `;
 
 const EDIT_ITEM = gql`
-    mutation UpdatePizza($updatePizzaId: ID!, $name: String!, $size: String!, $price: String!) {
-        updatePizza(id: $updatePizzaId, name: $name, size: $size, price: $price) {
+    mutation UpdatePizza($updatePizzaId: ID!, $name: String!, $img: String!, $size: String!, $price: String!) {
+        updatePizza(id: $updatePizzaId, name: $name, img: $img, size: $size, price: $price) {
             id
             name
+            img
             size
             price
             createdAt
@@ -39,9 +41,16 @@ const EDIT_ITEM = gql`
     }
 `;
 
+const DELETE_ITEM = gql`
+    mutation UpdatePizza($deletePizzaId: ID!) {
+        deletePizza(id: $deletePizzaId)
+    }
+`;
+
 export {
 	SIGNUP_USER,
 	SIGNIN_USER,
-    NEW_ITEM,
-    EDIT_ITEM
+	NEW_ITEM,
+	EDIT_ITEM,
+    DELETE_ITEM
 };

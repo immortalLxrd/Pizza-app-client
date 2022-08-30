@@ -41,6 +41,14 @@ const ItemFormComponent = ({action, content = {}, title, ...props}) => {
 						<Input
 							required
 							type="text"
+							name="img"
+							value={values?.img}
+							placeholder="Img"
+							onChange={onChange}
+						/>
+						<Input
+							required
+							type="text"
 							name="size"
 							value={values?.size}
 							placeholder="Size"

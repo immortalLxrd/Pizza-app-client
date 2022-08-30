@@ -1,7 +1,7 @@
 import {useQuery} from '@apollo/client'
 import {useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import {GET_PIZZA} from "../gql/query";
+import {GET_PIZZA_LIST} from "../gql/query";
 
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
 		document.title = "Pizza!"
 	})
 
-	const {data, loading, error} = useQuery(GET_PIZZA)
+	const {data, loading, error} = useQuery(GET_PIZZA_LIST)
 
 	if (loading) return <p className='_container home'>Loading...</p>
 
@@ -24,7 +24,7 @@ const Home = () => {
 						<Link to={`/pizza/${item.id}`} key={item.id}>
 							<div className='card pizza_list__card'>
 								<ul>
-									<img className='card__img' src="/img/pizza.png" alt=""/>
+									<img className='card__img' src={item.img} alt=""/>
 									<li className='title card__title'>
 										{item.name}
 									</li>

@@ -6,13 +6,14 @@ const GET_ITEM = gql`
         pizzaItem(id: $pizzaItemId) {
             size
             name
+            img
             id
             price
         }
     }
 `;
 
-const GET_PIZZA = gql`
+const GET_PIZZA_LIST = gql`
     query PizzaFeed($cursor: String) {
         pizzaFeed(cursor: $cursor) {
             cursor
@@ -20,6 +21,7 @@ const GET_PIZZA = gql`
             items {
                 id
                 name
+                img
                 size
                 price
             }
@@ -28,4 +30,4 @@ const GET_PIZZA = gql`
 `;
 
 
-export {GET_ITEM, GET_PIZZA};
+export {GET_ITEM, GET_PIZZA_LIST};

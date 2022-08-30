@@ -3,7 +3,7 @@ import {useMutation} from "@apollo/client";
 import ItemFormComponent from "../components/ItemFormComponent";
 import {useNavigate} from "react-router-dom";
 import {NEW_ITEM} from "../gql/mutations";
-import {GET_PIZZA} from "../gql/query";
+import {GET_PIZZA_LIST} from "../gql/query";
 
 
 const NewItem = () => {
@@ -13,7 +13,7 @@ const NewItem = () => {
 	});
 
 	const [newItem, {loading, error}] = useMutation(NEW_ITEM, {
-		refetchQueries: [{query: GET_PIZZA}],
+		refetchQueries: [{query: GET_PIZZA_LIST}],
 		onCompleted: data => {
 			navigate(`/pizza/${data.newPizza.id}`);
 		}

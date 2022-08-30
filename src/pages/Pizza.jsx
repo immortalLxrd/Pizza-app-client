@@ -3,6 +3,7 @@ import {Link, useParams} from 'react-router-dom';
 import {useEffect} from 'react';
 import {GET_ITEM} from "../gql/query";
 import Button from "../components/UI/Button/Button";
+import DeleteItemComponent from "../components/DeleteItemComponent";
 
 const Pizza = () => {
 	let params = useParams();
@@ -17,13 +18,13 @@ const Pizza = () => {
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error!</p>;
 
-	const {name, size, price} = data.pizzaItem;
+	const {name, img, size, price} = data.pizzaItem;
 
 	return (
 		<>
 			<div className="_container pizza_item">
 				<div className='card pizza_item__card'>
-					<img className='card__img pizza_item__img' src="/img/pizza.png" alt=""/>
+					<img className='card__img pizza_item__img' src={img} alt=""/>
 					<div className='card__description pizza_item__description'>
 						<p className='title card__title'>
 							{name}
@@ -34,10 +35,18 @@ const Pizza = () => {
 						<p>
 							<b>Price:</b> ${price}
 						</p>
-						<Link className="pizza_item__btn" to={`/pizza/${id}/edit`}>
-							<Button className="pizza_item__btn">
-								Edit
-							</Button></Link>
+						<ul className="pizza_item__btns">
+							<li className="pizza_item__btn">
+								<DeleteItemComponent id={id}/>
+							</li>
+							<li className="pizza_item__btn">
+								<Link className="pizza_item__btn" to={`/pizza/${id}/edit`}>
+									<Button>
+										Edit
+									</Button>
+								</Link>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
