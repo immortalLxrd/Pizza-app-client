@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import { useMutation} from "@apollo/client";
+import {useEffect} from 'react';
+import {useMutation} from "@apollo/client";
 import ItemFormComponent from "../components/ItemFormComponent";
 import {useNavigate} from "react-router-dom";
 import {NEW_ITEM} from "../gql/mutations";
@@ -21,7 +21,8 @@ const NewItem = () => {
 
 	if (loading) return (<p className='_container home'>Loading...</p>);
 	if (error) return (<p className='_container home'>Error creating this item...</p>);
-	return (<ItemFormComponent action={newItem}/>);
+	return (<ItemFormComponent action={newItem} title="Create new item"/>);
 };
+
 
 export default NewItem;

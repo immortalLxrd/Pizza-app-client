@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Input from "./UI/Input/Input";
 import Button from "./UI/Button/Button";
 
-const ItemFormComponent = ({action, content = {}, ...props}) => {
+const ItemFormComponent = ({action, content = {}, title, ...props}) => {
 		const [values, setValues] = useState(content);
 
 		const onChange = e => {
@@ -25,7 +25,7 @@ const ItemFormComponent = ({action, content = {}, ...props}) => {
 		return (
 			<div className='sign'>
 				<div className="_container">
-					<h2 className='title sign__title'>Create New Item</h2>
+					<h2 className='title sign__title'>{title}</h2>
 					<form
 						className='form sign__form'
 						onSubmit={omSubmit}
@@ -58,7 +58,7 @@ const ItemFormComponent = ({action, content = {}, ...props}) => {
 							className='form__btn'
 							type='submit'
 						>
-							Add Item
+							Submit
 						</Button>
 					</form>
 				</div>

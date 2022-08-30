@@ -22,7 +22,7 @@ const EditItem = () => {
 
 	if (loading) return (<p className='_container home'>Loading...</p>);
 	if (error) return (<p className='_container home'>Error creating this item...</p>);
-	return (<ItemFormComponent content={data.pizzaItem} action={editItem}/>);
+	return (<ItemFormComponent content={data.pizzaItem} action={editItem} title="Edit Item"/>);
 };
 
 

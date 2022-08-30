@@ -23,13 +23,19 @@ const Header = () => {
 						<Link to="/">Catalog</Link>
 					</li>
 					{
-						user ? (
-							<a
+						user ? (<>
+							<li className='nav__item'>
+								<Link to={'/pizza/new'}>
+									New Item
+								</Link><
+							/li>
+							<li
+								className='nav__item'
 								onClick={onLogout}
 							>
 								Log Out
-							</a>
-						) : (<>
+							</li>
+						</>) : (<>
 							<li className='nav__item'>
 								<Link to="/signin">Sign In</Link>
 							</li>

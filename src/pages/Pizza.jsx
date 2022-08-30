@@ -1,7 +1,8 @@
 import {useQuery} from '@apollo/client';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {useEffect} from 'react';
 import {GET_ITEM} from "../gql/query";
+import Button from "../components/UI/Button/Button";
 
 const Pizza = () => {
 	let params = useParams();
@@ -33,6 +34,10 @@ const Pizza = () => {
 						<p>
 							<b>Price:</b> ${price}
 						</p>
+						<Link className="pizza_item__btn" to={`/pizza/${id}/edit`}>
+							<Button className="pizza_item__btn">
+								Edit
+							</Button></Link>
 					</div>
 				</div>
 			</div>

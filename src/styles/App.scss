@@ -13,8 +13,11 @@ body {
 }
 
 .main {
-  flex: 1 1 auto;
+  display: flex;
   padding: 50px 10px;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
 }
 
 h1 {
@@ -72,6 +75,7 @@ a {
 }
 
 .nav {
+  cursor: pointer;
   &__item:not(:last-child) {
     margin-right: 20px;
   }
@@ -91,6 +95,7 @@ a {
 }
 
 .form {
+  min-height: 100%;
   display: grid;
   gap: 20px 0;
 
@@ -133,7 +138,7 @@ a {
   &__title {
     text-align: center;
     font-size: 26px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
   }
 
   &__description {
@@ -143,8 +148,9 @@ a {
 .pizza_item {
   &__card {
     display: grid;
-    padding: 50px 100px;
+    padding: 0 50px;
     grid-template-columns: auto 1fr;
+    gap: 50px;
   }
 
   &__img {
@@ -152,10 +158,15 @@ a {
   }
 
   &__description {
-    padding: 0px 50px;
-    width: auto;
+    min-width: 500px;
     display: flex;
     flex-direction: column;
+  }
+
+  &__btn {
+    margin-top: 40px;
+    max-width: 200px;
+    align-self: end;
   }
 }
 
