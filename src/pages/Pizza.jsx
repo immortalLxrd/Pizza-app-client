@@ -4,7 +4,6 @@ import {useEffect} from 'react';
 import {GET_ITEM} from "../gql/query";
 
 const Pizza = () => {
-
 	let params = useParams();
 	let id = params.id;
 
@@ -29,10 +28,10 @@ const Pizza = () => {
 							{name}
 						</p>
 						<p>
-							Size: {size}
+							<b>Size:</b> {size}
 						</p>
 						<p>
-							Price: {price}
+							<b>Price:</b> ${price}
 						</p>
 					</div>
 				</div>

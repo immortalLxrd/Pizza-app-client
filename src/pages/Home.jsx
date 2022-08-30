@@ -29,7 +29,10 @@ const Home = () => {
 										{item.name}
 									</li>
 									<li className='card__description'>
-										<b>size:</b> {item.size}
+										<b>Size:</b> {item.size}
+									</li>
+									<li className='card__description'>
+										<b>Price:</b> ${item.price}
 									</li>
 								</ul>
 							</div>

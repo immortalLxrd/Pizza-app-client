@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import Input from "./UI/Input/Input";
 import Button from "./UI/Button/Button";
 
-const ItemFormComponent = ({action, ...props}) => {
-		const [values, setValues] = useState();
+const ItemFormComponent = ({action, content = {}, ...props}) => {
+		const [values, setValues] = useState(content);
 
 		const onChange = e => {
 			setValues({
@@ -32,13 +32,17 @@ const ItemFormComponent = ({action, ...props}) => {
 					>
 						<Input
 							required
+							type="text"
 							name="name"
+							value={values?.name}
 							placeholder="Name"
 							onChange={onChange}
 						/>
 						<Input
 							required
+							type="text"
 							name="size"
+							value={values?.size}
 							placeholder="Size"
 							onChange={onChange}
 						/>
@@ -46,6 +50,7 @@ const ItemFormComponent = ({action, ...props}) => {
 							required
 							type="number"
 							name="price"
+							value={values?.price}
 							placeholder="Price"
 							onChange={onChange}
 						/>

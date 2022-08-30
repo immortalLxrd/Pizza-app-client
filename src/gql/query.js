@@ -21,8 +21,7 @@ const GET_PIZZA = gql`
                 id
                 name
                 size
-                createdAt
-                updatedAt
+                price
             }
         }
     }

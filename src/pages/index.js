@@ -20,8 +20,8 @@ const Pages = () => {
 						<Route path="/signup" element={<SignUp/>}/>
 						<Route path="/signin" element={<SignIn/>}/>
 						<Route path="/pizza/:id" element={<Pizza/>}/>
-						<Route path="/new" element={<NewItem/>}/>
-						<Route path="/edit" element={<EditItem/>}/>
+						<Route path="/pizza/new" element={<NewItem/>}/>
+						<Route path="/pizza/:id/edit" element={<EditItem/>}/>
 					</Routes>
 				</Layout>
 			</BrowserRouter>
