@@ -7,8 +7,6 @@ const Header = () => {
 	const navigate = useNavigate();
 	const {user, logout} = useContext(AuthContext);
 
-	const userMemo = useMemo(() => user, [user]);
-
 	function onLogout() {
 		logout();
 		navigate('/');
@@ -25,7 +23,7 @@ const Header = () => {
 						<Link to="/">Catalog</Link>
 					</li>
 					{
-						userMemo ? (<>
+						user ? (<>
 							<li className='nav__item'>
 								<Link to={'/pizza/new'}>
 									New Item

@@ -10,7 +10,7 @@ import {SIGNUP_USER} from "../gql/mutations";
 
 const SignUp = (props) => {
 	const navigate = useNavigate();
-	const [values, setValues] = useState();
+	const [values, setValues] = useState({});
 	const context = useContext(AuthContext);
 
 	useEffect(() => {

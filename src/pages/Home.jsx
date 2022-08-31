@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import PizzaFeedComponent from "../components/PizzaFeedComponent";
 import {useQuery} from "@apollo/client";
 import {GET_PIZZA_LIST} from "../gql/query";
-import Button from "../components/UI/Button/Button";
 
 
 const Home = () => {
@@ -45,5 +44,6 @@ const Home = () => {
 		</div>
 	);
 };
+
 
 export default Home
