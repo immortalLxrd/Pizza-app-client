@@ -25,7 +25,7 @@ const ItemFormComponent = ({action, content = {}, title, ...props}) => {
 		return (
 			<div className="_container">
 				<div className="item-form">
-					<img className='item-form__img' src={values?.img} alt=""/>
+					<img className='item-form__img' src={values?.img || '/img/pizza.png'} alt=""/>
 					<div>
 						<h2 className='title item-form__title'>{title}</h2>
 						<form
