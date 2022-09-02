@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Input from "./UI/Input/Input";
 import Button from "./UI/Button/Button";
+import Select from "./UI/Select/Select";
 
 const ItemFormComponent = ({action, content = {}, title, ...props}) => {
 		const [values, setValues] = useState(content);
@@ -48,14 +49,21 @@ const ItemFormComponent = ({action, content = {}, title, ...props}) => {
 								placeholder="Img"
 								onChange={onChange}
 							/>
-							<Input
+							<Select
 								required
 								type="text"
 								name="size"
 								value={values?.size}
 								placeholder="Size"
 								onChange={onChange}
-							/>
+							>
+								<option value="standard">
+									Standard
+								</option>
+								<option value="large">
+									Large
+								</option>
+							</Select>
 							<Input
 								required
 								type="number"

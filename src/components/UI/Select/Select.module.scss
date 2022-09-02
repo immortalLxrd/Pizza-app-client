@@ -1,0 +1,14 @@
+
+.select {
+  padding: 15px 32px;
+  width: 100%;
+  border: 1px solid rgba(48, 50, 71, .1);
+  border-radius: 5px;
+  text-align: start;
+  font-size: 20px;
+
+  option {
+    padding: 15px 32px;
+    text-align-last: right;
+  }
+}
