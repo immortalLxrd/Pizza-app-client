@@ -1,19 +1,20 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import Input from "./UI/Input/Input";
 import Button from "./UI/Button/Button";
 import Select from "./UI/Select/Select";
+import {formReducer, formActions} from "../reducers/formReducer";
 
 const ItemFormComponent = ({action, content = {}, title, ...props}) => {
-		const [values, setValues] = useState(content);
+		const [values, dispatch] = useReducer(formReducer, content);
 
-		const onChange = e => {
-			setValues({
-				...values,
-				[e.target.name]: e.target.value
+		const handleChange = e => {
+			dispatch({
+				type: formActions.CHANGE_INPUT,
+				payload: {name: e.target.name, value: e.target.value}
 			});
 		};
 
-		const omSubmit = e => {
+		const handleSubmit = e => {
 			e.preventDefault();
 			action({
 					variables: {
@@ -31,7 +32,7 @@ const ItemFormComponent = ({action, content = {}, title, ...props}) => {
 						<h2 className='title item-form__title'>{title}</h2>
 						<form
 							className='form item-form__form'
-							onSubmit={omSubmit}
+							onSubmit={handleSubmit}
 						>
 							<Input
 								required
@@ -39,7 +40,7 @@ const ItemFormComponent = ({action, content = {}, title, ...props}) => {
 								name="name"
 								value={values?.name}
 								placeholder="Name"
-								onChange={onChange}
+								onChange={handleChange}
 							/>
 							<Input
 								required
@@ -47,7 +48,7 @@ const ItemFormComponent = ({action, content = {}, title, ...props}) => {
 								name="img"
 								value={values?.img}
 								placeholder="Img"
-								onChange={onChange}
+								onChange={handleChange}
 							/>
 							<Select
 								required
@@ -55,7 +56,7 @@ const ItemFormComponent = ({action, content = {}, title, ...props}) => {
 								name="size"
 								value={values?.size}
 								placeholder="Size"
-								onChange={onChange}
+								onChange={handleChange}
 							>
 								<option value="standard">
 									Standard
@@ -70,7 +71,7 @@ const ItemFormComponent = ({action, content = {}, title, ...props}) => {
 								name="price"
 								value={values?.price}
 								placeholder="Price"
-								onChange={onChange}
+								onChange={handleChange}
 							/>
 							<div className="item-form__btns">
 								<Button type='submit'>
